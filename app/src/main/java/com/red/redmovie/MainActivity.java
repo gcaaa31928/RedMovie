@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initToolBar();
-        initRecyclerView();
+//        initRecyclerView();
     }
 
     private void initToolBar() {
