@@ -1,4 +1,4 @@
-package com.red.redmovie.fragments;
+package com.red.redmovie.movie.widget;
 
 import android.content.Context;
 import android.net.Uri;
