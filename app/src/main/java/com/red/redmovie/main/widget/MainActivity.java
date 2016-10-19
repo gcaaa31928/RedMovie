@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void switchToMovie() {
-//        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new MoviesFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new MoviesFragment()).commit();
         mToolBar.setTitle(R.string.movie);
     }
 
