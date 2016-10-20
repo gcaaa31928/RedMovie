@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +14,14 @@ import android.view.ViewGroup;
 
 import com.red.redmovie.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MoviesFragment extends Fragment {
+
+    public static int MOVIES_TYPE_HOT = 0;
+    public static int MOVIES_TYPE_NEWS = 0;
 
     private TabLayout mTableLayout;
     private ViewPager mViewPager;
@@ -35,6 +43,40 @@ public class MoviesFragment extends Fragment {
         mTableLayout.addTab(mTableLayout.newTab().setText(R.string.news));
         mTableLayout.setupWithViewPager(mViewPager);
         return view;
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        MoviePagerAdapter moviePagerAdapter = new MoviePagerAdapter(getChildFragmentManager());
+    }
+
+    public static class MoviePagerAdapter extends FragmentPagerAdapter{
+        private final List<Fragment> mFragments = new ArrayList<>();
+        private final List<String> mFragmentTitles = new ArrayList<>();
+
+        MoviePagerAdapter(FragmentManager fragmentManager){
+            super(fragmentManager);
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragments.add(fragment);
+            mFragmentTitles.add(title);
+        }
+
+
+        @Override
+        public int getCount() {
+            return mFragments.size();
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragments.get(position);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitles.get(position);
+        }
     }
 
 

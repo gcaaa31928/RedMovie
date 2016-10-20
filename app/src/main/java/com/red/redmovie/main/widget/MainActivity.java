@@ -3,20 +3,13 @@ package com.red.redmovie.main.widget;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
-import com.red.redmovie.Person;
 import com.red.redmovie.R;
-import com.red.redmovie.RVAdapter;
 import com.red.redmovie.main.presenter.MainPresenter;
 import com.red.redmovie.main.presenter.MainPresenterImpl;
 import com.red.redmovie.main.view.MainView;
 import com.red.redmovie.movie.widget.MoviesFragment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainView {
 
@@ -54,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 //        recyclerView.setHasFixedSize(true);
 //        LinearLayoutManager llm = new LinearLayoutManager(this);
 //        recyclerView.setLayoutManager(llm);
-//        RVAdapter rvAdapter = new RVAdapter(persons);
+//        MoviesAdapter rvAdapter = new MoviesAdapter(persons);
 //        recyclerView.setAdapter(rvAdapter);
 //
 //    }
