@@ -39,6 +39,7 @@ public class MoviesFragment extends Fragment {
         mTableLayout = (TabLayout) view.findViewById(R.id.tabs);
         mViewPager = (ViewPager) view.findViewById(R.id.viewpager);
         mViewPager.setOffscreenPageLimit(3);
+        setupViewPager(mViewPager);
         mTableLayout.addTab(mTableLayout.newTab().setText(R.string.hot));
         mTableLayout.addTab(mTableLayout.newTab().setText(R.string.news));
         mTableLayout.setupWithViewPager(mViewPager);
@@ -47,6 +48,10 @@ public class MoviesFragment extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
         MoviePagerAdapter moviePagerAdapter = new MoviePagerAdapter(getChildFragmentManager());
+        moviePagerAdapter.addFragment(MoviesListFragment.newInstance(MOVIES_TYPE_HOT), getString(R.string.hot));
+        moviePagerAdapter.addFragment(MoviesListFragment.newInstance(MOVIES_TYPE_NEWS), getString(R.string.news));
+        viewPager.setAdapter(moviePagerAdapter);
+
     }
 
     public static class MoviePagerAdapter extends FragmentPagerAdapter{

@@ -26,8 +26,13 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHo
     List<MoviesBean> mData;
     private Context mContext;
 
-    MoviesAdapter(Context context) {
+    public MoviesAdapter(Context context) {
         this.mContext = context;
+    }
+
+    public void setmData(List<MoviesBean> data) {
+        this.mData = data;
+        this.notifyDataSetChanged();
     }
 
     @Override
@@ -44,6 +49,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHo
 
     @Override
     public int getItemCount() {
+        if (mData == null) return 0;
         return mData.size();
     }
 
