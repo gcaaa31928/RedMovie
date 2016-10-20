@@ -5,6 +5,7 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,7 +32,7 @@ import java.util.List;
  * Use the {@link MoviesListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MoviesListFragment extends Fragment implements MoviesView {
+public class MoviesListFragment extends Fragment implements MoviesView, SwipeRefreshLayout.OnRefreshListener {
 
     private int mType = MoviesFragment.MOVIES_TYPE_HOT;
     private int pageIndex = 0;
@@ -68,6 +69,7 @@ public class MoviesListFragment extends Fragment implements MoviesView {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mAdapter = new MoviesAdapter(getActivity().getApplicationContext());
         mRecyclerView.setAdapter(mAdapter);
+        onRefresh();
         return view;
     }
 
@@ -78,5 +80,10 @@ public class MoviesListFragment extends Fragment implements MoviesView {
         }
         mData.addAll(moviesList);
         mAdapter.setmData(mData);
+    }
+
+    @Override
+    public void onRefresh() {
+        mMoviesPresenter.loadMovies(mType, 0);
     }
 }

@@ -1,6 +1,7 @@
 package com.red.redmovie.utils;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.service.carrier.CarrierMessagingService;
 import com.google.gson.internal.$Gson$Types;
 
@@ -33,6 +34,7 @@ public class OkHttpUtils {
         mOkHttpClient.newBuilder().connectTimeout(10, TimeUnit.SECONDS);
         mOkHttpClient.newBuilder().writeTimeout(10, TimeUnit.SECONDS);
         mOkHttpClient.newBuilder().readTimeout(10, TimeUnit.SECONDS);
+        mDelivery = new Handler(Looper.getMainLooper());
     }
 
     private synchronized static OkHttpUtils getInstance() {

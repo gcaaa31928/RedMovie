@@ -5,7 +5,10 @@ import com.red.redmovie.movie.model.MoviesModel;
 import com.red.redmovie.movie.model.MoviesModelImpl;
 import com.red.redmovie.movie.model.OnLoadMoviesListListener;
 import com.red.redmovie.movie.view.MoviesView;
+import com.red.redmovie.movie.widget.MoviesFragment;
+import com.red.redmovie.profile.Urls;
 
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -23,7 +26,16 @@ public class MoviesPresenterImpl implements MoviesPresenter, OnLoadMoviesListLis
 
     @Override
     public void loadMovies(int type, int page) {
+        String url = getUrl(type, page);
+        mMoviesModel.loadMovies(url, type, this);
+    }
 
+    private String getUrl(int type, int page) {
+        StringBuffer sb = new StringBuffer();
+        if (type== MoviesFragment.MOVIES_TYPE_HOT) {
+            sb.append(Urls.HOT_URL);
+        }
+        return sb.toString();
     }
 
     @Override
