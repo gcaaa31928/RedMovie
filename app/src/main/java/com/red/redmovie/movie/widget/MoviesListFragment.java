@@ -36,6 +36,7 @@ public class MoviesListFragment extends Fragment implements MoviesView, SwipeRef
     private RecyclerView mRecyclerView;
     private MoviesPresenter mMoviesPresenter;
     private List<MoviesBean> mData;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     public static MoviesListFragment newInstance(int type) {
         MoviesListFragment fragment = new MoviesListFragment();
@@ -59,6 +60,8 @@ public class MoviesListFragment extends Fragment implements MoviesView, SwipeRef
         View view = inflater.inflate(R.layout.fragment_movies_list, container, false);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycle_view);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_widget);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -103,5 +106,15 @@ public class MoviesListFragment extends Fragment implements MoviesView, SwipeRef
         pageIndex = 1;
         if (mData != null) mData.clear();
         mMoviesPresenter.loadMovies(mType, pageIndex);
+    }
+
+    @Override
+    public void showProgress() {
+        mSwipeRefreshLayout.setRefreshing(true);
+    }
+
+    @Override
+    public void hideProgress() {
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 }

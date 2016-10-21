@@ -10,4 +10,6 @@ import java.util.List;
 
 public interface MoviesView {
     void addMovies(List<MoviesBean> moviesList);
+    void hideProgress();
+    void showProgress();
 }
