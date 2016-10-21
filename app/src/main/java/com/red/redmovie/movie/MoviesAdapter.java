@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.red.redmovie.Person;
 import com.red.redmovie.R;
 import com.red.redmovie.beans.MoviesBean;
+import com.red.redmovie.utils.ImageLoaderUtils;
+import com.red.redmovie.utils.LogUtils;
 
 import java.util.List;
 
@@ -24,6 +26,7 @@ import java.util.List;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHolder> {
 
     List<MoviesBean> mData;
+    private static final String TAG = "MoviesAdapter";
     private Context mContext;
 
     public MoviesAdapter(Context context) {
@@ -42,7 +45,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHo
             if (movies == null) return;
             ((ItemViewHolder) holder).mTitle.setText(movies.getTitle());
             ((ItemViewHolder) holder).mDesc.setText(movies.getOverview());
-
+            LogUtils.d(TAG, movies.getPosterPath());
+            ImageLoaderUtils.display(mContext, holder.mMovieImg, movies.getPosterPath());
 
         }
     }

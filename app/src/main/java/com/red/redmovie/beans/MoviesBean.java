@@ -1,5 +1,7 @@
 package com.red.redmovie.beans;
 
+import com.red.redmovie.profile.Urls;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class MoviesBean implements Serializable {
     private String vote_average;
 
     public String getPosterPath() {
-        return poster_path;
+        return Urls.POSTER_HOST + poster_path;
     }
 
     public void setPosterPath(String poster_path) {
