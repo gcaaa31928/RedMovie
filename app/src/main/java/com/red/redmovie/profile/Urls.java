@@ -12,4 +12,6 @@ public class Urls {
 
     public final static String HOT_URL = HOST + "discover/movie?" + "api_key=" +
             API_KEY + "&language=" + LANGUAGE;
+
+    public final static String PAGE_PARAM = "&page=";
 }

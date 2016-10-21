@@ -18,7 +18,6 @@ public class MoviesModelImpl implements MoviesModel {
             @Override
             public void onSuccess(String response) {
                 List<MoviesBean> beans = MovieUtils.readJsonMovieBean(response, "results");
-                LogUtils.d("Red", response);
                 listener.onSuccess(beans);
             }
 
