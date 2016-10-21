@@ -41,7 +41,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHo
             MoviesBean movies = mData.get(position);
             if (movies == null) return;
             ((ItemViewHolder) holder).mTitle.setText(movies.getTitle());
-            ((ItemViewHolder) holder).mDesc.setText(movies.getTitle());
+            ((ItemViewHolder) holder).mDesc.setText(movies.getOverview());
 
 
         }

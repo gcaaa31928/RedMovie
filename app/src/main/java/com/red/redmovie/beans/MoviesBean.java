@@ -1,26 +1,89 @@
 package com.red.redmovie.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Red on 2016/10/20.
  */
 
 public class MoviesBean implements Serializable {
-    private String docid;
+    private String poster_path;
+    private String adult;
+    private String overview;
+    private String release_date;
+    private List<String> genre_ids;
+    private String id;
+    private String original_title;
+    private String original_language;
     private String title;
-    private String desc;
-    private String imgsrc;
-    private String source;
-    private String ptime;
-    private String tag;
+    private String backdrop_path;
+    private String popularity;
+    private String vote_count;
+    private String vote_average;
 
-    public String getDocid() {
-        return docid;
+    public String getPosterPath() {
+        return poster_path;
     }
 
-    public void setDocid(String docid) {
-        this.docid = docid;
+    public void setPosterPath(String poster_path) {
+        this.poster_path = poster_path;
+    }
+
+    public String getAdult() {
+        return adult;
+    }
+
+    public void setAdult(String adult) {
+        this.adult = adult;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public String getReleaseDate() {
+        return release_date;
+    }
+
+    public void setReleaseDate(String release_date) {
+        this.release_date = release_date;
+    }
+
+    public List<String> getGenreIds() {
+        return genre_ids;
+    }
+
+    public void setGenreIds(List<String> genre_ids) {
+        this.genre_ids = genre_ids;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getOriginalTitle() {
+        return original_title;
+    }
+
+    public void setOriginalTitle(String original_title) {
+        this.original_title = original_title;
+    }
+
+    public String getOriginalLanguage() {
+        return original_language;
+    }
+
+    public void setOriginaLanguage(String original_language) {
+        this.original_language = original_language;
     }
 
     public String getTitle() {
@@ -31,43 +94,35 @@ public class MoviesBean implements Serializable {
         this.title = title;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getBackdropPath() {
+        return backdrop_path;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setBackdropPath(String backdrop_path) {
+        this.backdrop_path = backdrop_path;
     }
 
-    public String getImgsrc() {
-        return imgsrc;
+    public String getPopularity() {
+        return popularity;
     }
 
-    public void setImgsrc(String imgsrc) {
-        this.imgsrc = imgsrc;
+    public void setPopularity(String popularity) {
+        this.popularity = popularity;
     }
 
-    public String getSource() {
-        return source;
+    public String getVoteCount() {
+        return vote_count;
     }
 
-    public void setSource(String source) {
-        this.source = source;
+    public void setVoteCount(String vote_count) {
+        this.vote_count = vote_count;
     }
 
-    public String getPtime() {
-        return ptime;
+    public String getVoteAverage() {
+        return vote_average;
     }
 
-    public void setPtime(String ptime) {
-        this.ptime = ptime;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setVoteAverage(String vote_average) {
+        this.vote_average = vote_average;
     }
 }

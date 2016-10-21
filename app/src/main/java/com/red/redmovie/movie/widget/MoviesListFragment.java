@@ -24,14 +24,7 @@ import com.red.redmovie.movie.view.MoviesView;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link MoviesListFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link MoviesListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class MoviesListFragment extends Fragment implements MoviesView, SwipeRefreshLayout.OnRefreshListener {
 
     private int mType = MoviesFragment.MOVIES_TYPE_HOT;
@@ -76,7 +69,7 @@ public class MoviesListFragment extends Fragment implements MoviesView, SwipeRef
     @Override
     public void addMovies(List<MoviesBean> moviesList) {
         if(mData == null) {
-            mData = new ArrayList<MoviesBean>();
+            mData = new ArrayList<>();
         }
         mData.addAll(moviesList);
         mAdapter.setmData(mData);

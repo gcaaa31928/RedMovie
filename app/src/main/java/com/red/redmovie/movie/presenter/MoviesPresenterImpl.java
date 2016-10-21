@@ -45,6 +45,6 @@ public class MoviesPresenterImpl implements MoviesPresenter, OnLoadMoviesListLis
 
     @Override
     public void onSuccess(List<MoviesBean> list) {
-
+        mMoviesView.addMovies(list);
     }
 }
