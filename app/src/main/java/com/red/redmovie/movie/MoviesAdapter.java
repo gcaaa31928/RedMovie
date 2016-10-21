@@ -1,8 +1,6 @@
 package com.red.redmovie.movie;
 
-import android.content.ClipData;
 import android.content.Context;
-import android.graphics.Movie;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.red.redmovie.Person;
 import com.red.redmovie.R;
 import com.red.redmovie.beans.MoviesBean;
 import com.red.redmovie.utils.ImageLoaderUtils;
@@ -45,6 +42,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHo
             if (movies == null) return;
             ((ItemViewHolder) holder).mTitle.setText(movies.getTitle());
             ((ItemViewHolder) holder).mDesc.setText(movies.getOverview());
+            ((ItemViewHolder) holder).mScore.setText(movies.getVoteAverage());
             LogUtils.d(TAG, movies.getPosterPath());
             ImageLoaderUtils.display(mContext, holder.mMovieImg, movies.getPosterPath());
 
@@ -73,14 +71,16 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHo
         CardView cv;
         TextView mTitle;
         TextView mDesc;
+        TextView mScore;
         ImageView mMovieImg;
 
         ItemViewHolder(View itemView) {
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.cv);
-            mTitle = (TextView) itemView.findViewById(R.id.person_name);
-            mDesc = (TextView) itemView.findViewById(R.id.person_age);
-            mMovieImg = (ImageView) itemView.findViewById(R.id.person_photo);
+            mTitle = (TextView) itemView.findViewById(R.id.title);
+            mDesc = (TextView) itemView.findViewById(R.id.overview);
+            mScore = (TextView) itemView.findViewById(R.id.scores);
+            mMovieImg = (ImageView) itemView.findViewById(R.id.poster);
         }
     }
 }
