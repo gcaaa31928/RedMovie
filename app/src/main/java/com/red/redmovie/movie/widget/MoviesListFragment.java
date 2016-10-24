@@ -1,5 +1,6 @@
 package com.red.redmovie.movie.widget;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -57,10 +58,11 @@ public class MoviesListFragment extends Fragment implements MoviesView, SwipeRef
             Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
             intent.putExtra("movie", movie);
             View transitionView = view.findViewById(R.id.poster);
-            ActivityOptionsCompat options =
-                    ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+            LogUtils.d("Red", transitionView.toString());
+            ActivityOptions options =
+                    ActivityOptions.makeSceneTransitionAnimation(getActivity(),
                             transitionView, getString(R.string.transitions_movie_poster));
-            ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+            startActivity(intent, options.toBundle());
         }
     };
 
