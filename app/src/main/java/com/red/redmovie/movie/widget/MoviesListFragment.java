@@ -58,11 +58,10 @@ public class MoviesListFragment extends Fragment implements MoviesView, SwipeRef
             Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
             intent.putExtra("movie", movie);
             View transitionView = view.findViewById(R.id.poster);
-            LogUtils.d("Red", transitionView.toString());
-            ActivityOptions options =
-                    ActivityOptions.makeSceneTransitionAnimation(getActivity(),
+            ActivityOptionsCompat  options =
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
                             transitionView, getString(R.string.transitions_movie_poster));
-            startActivity(intent, options.toBundle());
+            ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
         }
     };
 
