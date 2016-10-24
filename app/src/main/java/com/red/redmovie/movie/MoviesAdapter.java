@@ -25,6 +25,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHo
     List<MoviesBean> mData;
     private static final String TAG = "MoviesAdapter";
     private Context mContext;
+    private OnItemClickListener mOnItemClickListener;
 
     public MoviesAdapter(Context context) {
         this.mContext = context;
@@ -33,6 +34,15 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHo
     public void setmData(List<MoviesBean> data) {
         this.mData = data;
         this.notifyDataSetChanged();
+    }
+
+    public MoviesBean getItem(int position) {
+        if (mData == null) return null;
+        return mData.get(position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
     }
 
     @Override
@@ -67,7 +77,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHo
         super.onAttachedToRecyclerView(recyclerView);
     }
 
-    public static class ItemViewHolder extends RecyclerView.ViewHolder {
+    public interface OnItemClickListener {
+        public void onItemClick(View view, int position);
+    }
+
+    public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CardView cv;
         TextView mTitle;
         TextView mDesc;
@@ -81,6 +95,16 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ItemViewHo
             mDesc = (TextView) itemView.findViewById(R.id.overview);
             mScore = (TextView) itemView.findViewById(R.id.scores);
             mMovieImg = (ImageView) itemView.findViewById(R.id.poster);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            LogUtils.d("Red", "Click");
+            if (mOnItemClickListener != null)
+                mOnItemClickListener.onItemClick(v, getAdapterPosition());
         }
     }
+
+
 }

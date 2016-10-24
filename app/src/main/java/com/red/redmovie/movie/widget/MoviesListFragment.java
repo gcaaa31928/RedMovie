@@ -1,9 +1,12 @@
 package com.red.redmovie.movie.widget;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -46,6 +49,21 @@ public class MoviesListFragment extends Fragment implements MoviesView, SwipeRef
         return fragment;
     }
 
+    public MoviesAdapter.OnItemClickListener mOnItemClickListener = new MoviesAdapter.OnItemClickListener() {
+        @Override
+        public void onItemClick(View view, int position) {
+            if (mData.size() <= 0) return;
+            MoviesBean movie = mAdapter.getItem(position);
+            Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
+            intent.putExtra("movie", movie);
+            View transitionView = view.findViewById(R.id.poster);
+            ActivityOptionsCompat options =
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+                            transitionView, getString(R.string.transitions_movie_poster));
+            ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+        }
+    };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +84,7 @@ public class MoviesListFragment extends Fragment implements MoviesView, SwipeRef
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mAdapter = new MoviesAdapter(getActivity().getApplicationContext());
+        mAdapter.setOnItemClickListener(mOnItemClickListener);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addOnScrollListener(mOnScrollListener);
         onRefresh();
